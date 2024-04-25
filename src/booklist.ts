@@ -1,14 +1,14 @@
-type Book = {
+export type Book = {
     title: string,
     description: string,
     authors: string[],
     starsRating:Star[],
     imgUrl: string
 }
-type Star = {
+export type Star = {
     rating: number,
 }
-const starArray: Star[] = [{rating:1},{rating:2},{rating:3},{rating:4},{rating:5}]
+export const starArray: Star[] = [{rating:1},{rating:2},{rating:3},{rating:4},{rating:5}]
 
 export const bookList: Book[] = [
     {

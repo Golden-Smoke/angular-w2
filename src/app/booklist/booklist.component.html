@@ -18,11 +18,35 @@
                 }
             </div>
         </div>
+        <div (click)="showEditForm()" class="edit-btn">Edit Book</div>
     </div>
+    <form class="edit-form" (submit)="closeEditForm($event)">
+        <div class="form-field">
+            <label for="title">Title</label>
+            <input type="text" id="title" [value]="books[activeBook].title">
+        </div>
+        <div class="form-field">
+            <label for="description">Description</label>
+            <textarea id="description" [value]="books[activeBook].description"></textarea>
+        </div>
+        <div class="form-field">
+            <label for="authors">Authors</label>
+            <input type="text" id="authors" [value]="books[activeBook].authors.join()">
+            <p>Note: Authors must be comma separated!</p>
+        </div>
+        <div class="form-field">
+            <label for="img-url">Image URL</label>
+            <input type="text" id="img-url" [value]="books[activeBook].imgUrl">
+        </div>
+        <button type="submit">Submit changes</button>
+        <p>Note: The changes you made to the books will be visible in the next rotation of rating!</p>
+    </form>
+    <div class="overlay"></div>
     <h3>Average Rating : {{currentAverageRating}}</h3>
 }@else {
     <p class="f-2">You rated all of the books successfully!</p>
     <h2>Your average rating : {{currentAverageRating}}</h2>
+
     @if(!isRatingConfirmed) {
         <p class="btn dashed" (click)="resetRating()">Rate the books again</p>
         <p class="btn dashed" (click)="finishRating()">Finish the rating</p>

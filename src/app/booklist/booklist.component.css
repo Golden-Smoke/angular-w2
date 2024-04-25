@@ -1,3 +1,6 @@
+* {
+    box-sizing: border-box;
+}
 .book {
     display:grid;
     grid-template-columns: 20rem 1fr;
@@ -7,6 +10,7 @@
     border-radius: 15px;
     margin-block:1rem;
     align-items: center;
+    position: relative;
 }
 .book-img > img {
     width:100%;
@@ -18,7 +22,40 @@
     justify-content: center;
     margin-block:2rem;
 }
-
+.edit-form {
+    display:none;
+    border-radius: 15px;
+    padding: 1em;
+    position: fixed;
+    z-index: 10;
+    top:50%;
+    left:50%;
+    transform: translate(-50%,-50%);
+    background: white;
+    width:30rem;
+    max-width: calc(100% - 5rem);
+}
+.edit-form input, 
+.edit-form button,
+.edit-form textarea { 
+    font-size: inherit;
+    display: block;
+    width:100%;
+    padding:1em;
+}
+.form-field {margin-block-end:2rem;}
+label {font-size: 1.125rem;margin-block:1rem;}
+.edit-form.show,
+.overlay.show {
+    display:block;
+}
+.overlay {
+    display: none;
+    position: fixed;
+    inset:0;
+    background:rgba(0,0,0,0.7);
+    z-index:5;
+}
 .rating-stars > * {
     flex-basis:70px;
 }
@@ -31,12 +68,19 @@
     border: 2px dashed;
     padding: .5em;
 }
-.btn {
-    cursor: pointer;
-}
-.f-2 {
-    font-size:1.4rem;
-}
+.btn {cursor: pointer;}
+
+.edit-btn{
+     background:black;
+     color:#fff;
+     position: absolute;
+     padding:.5em 1em;
+     top:3%;
+     right:3%;
+     cursor: pointer;
+    }
+.f-2 {font-size:1.4rem;}
+
 /* Star Hover Effect */
 
 .star.star-1:hover{
