@@ -1,0 +1,33 @@
+
+@if(!isRatingFinished) {
+    <div class="book">
+        <div class="book-img">
+            <img [src]="books[activeBook].imgUrl" [alt]="books[activeBook].title">
+        </div>
+        <div class="book-content">
+            <h2>{{books[activeBook].title}}</h2>
+            <div class="dashed">
+                <p><b>Description :</b> {{books[activeBook].description}}</p>
+                <p><b>Authors :</b> {{books[activeBook].authors.join()}}</p>
+            </div>
+            <div class="rating-stars">
+                @for(star of books[activeBook].starsRating; track star) {
+                    <div class="star">
+                        <img [className]="'star star-'+star.rating" (click)="showNextBook(star.rating);" src="assets/star-regular.svg" alt="star.svg">
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+    <h3>Average Rating : {{currentAverageRating}}</h3>
+}@else {
+    <p class="f-2">You rated all of the books successfully!</p>
+    <h2>Your average rating : {{currentAverageRating}}</h2>
+    @if(!isRatingConfirmed) {
+        <p class="btn dashed" (click)="resetRating()">Rate the books again</p>
+        <p class="btn dashed" (click)="finishRating()">Finish the rating</p>
+    }@else {
+        <h3>Thank you for your ratings!<br>Have a nice day!</h3>
+    }
+}
+

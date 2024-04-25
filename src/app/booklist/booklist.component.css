@@ -1,0 +1,52 @@
+.book {
+    display:grid;
+    grid-template-columns: 20rem 1fr;
+    gap:1rem;
+    border:2px solid;
+    padding:1em;
+    border-radius: 15px;
+    margin-block:1rem;
+    align-items: center;
+}
+.book-img > img {
+    width:100%;
+    aspect-ratio: 1/1.5;
+    object-fit: cover;
+}
+.rating-stars {
+    display: flex;
+    justify-content: center;
+    margin-block:2rem;
+}
+
+.rating-stars > * {
+    flex-basis:70px;
+}
+.star > img {
+    width:100%;
+    filter:drop-shadow(0 0 10px black);
+    cursor: pointer;
+}
+.dashed {
+    border: 2px dashed;
+    padding: .5em;
+}
+.btn {
+    cursor: pointer;
+}
+.f-2 {
+    font-size:1.4rem;
+}
+/* Star Hover Effect */
+
+.star.star-1:hover{
+    filter:drop-shadow(0 0 10px gold);
+}
+
+.rating-stars:has(.star-2:hover) :is(.star-1,.star-2),
+.rating-stars:has(.star-3:hover) :is(.star-1,.star-2,.star-3),
+.rating-stars:has(.star-4:hover) :is(.star-1,.star-2,.star-3,.star-4),
+.rating-stars:has(.star-5:hover) :is(.star-1,.star-2,.star-3,.star-4,.star-5)
+{
+    filter:drop-shadow(0 0 10px gold);
+}
